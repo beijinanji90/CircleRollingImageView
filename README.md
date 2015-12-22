@@ -1,2 +1,2 @@
 # CircleRollingImageView
-1、通过UIScrollView，两个UIImageView来搭建图片无限循环滚动，可以支持本地图、网络图
+A UIScrollView, two UIImageView a framework can be infinite scroll, can support local and network pictures
