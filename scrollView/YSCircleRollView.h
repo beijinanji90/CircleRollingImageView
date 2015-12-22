@@ -12,6 +12,7 @@
 
 @protocol YSCircleRollViewDelegate <NSObject>
 
+- (void)circleRollViewClick:(YSCircleImageData *)circleImageData;
 
 @end
 
@@ -33,5 +34,8 @@
 
 //这个数据中，需要是YSCircleImageData对象
 - (void)refreshCircleData:(NSArray *)arrayCircleData;
+
+//代理
+@property (nonatomic,weak) id<YSCircleRollViewDelegate> delegate;
 
 @end

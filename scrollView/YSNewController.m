@@ -9,6 +9,9 @@
 #import "YSNewController.h"
 #import "YSCircleRollView.h"
 
+@interface YSNewController ()<YSCircleRollViewDelegate>
+
+@end
 @implementation YSNewController
 
 - (void)viewDidLoad
@@ -30,9 +33,14 @@
     
     YSCircleRollView *rollView = [[YSCircleRollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     rollView->scrollTimeMargin = 3;
+    rollView.delegate = self;
     [self.view addSubview:rollView];
     [rollView refreshCircleData:arrayData];
-    
+}
+
+- (void)circleRollViewClick:(YSCircleImageData *)circleImageData
+{
+    NSLog(@"我被点击了");
 }
 
 @end

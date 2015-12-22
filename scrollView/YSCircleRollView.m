@@ -96,15 +96,21 @@
     self.scrollView = scrollView;
     
     //需要显示的两个ImageView
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick:)];
     YSCircleImageView *image1 = [[YSCircleImageView alloc] init];
     image1.backgroundColor = [UIColor lightGrayColor];
+    image1.userInteractionEnabled = YES;
     image1.frame = CGRectMake(0, 0, width, heigth);
+    [image1 addGestureRecognizer:tap1];
     [scrollView addSubview:image1];
     self.imageView1 = image1;
     
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick:)];
     YSCircleImageView *image2 = [[YSCircleImageView alloc] init];
+    image2.userInteractionEnabled = YES;
     image2.backgroundColor = [UIColor lightGrayColor];
     image2.frame = CGRectMake(width, 0, width, heigth);
+    [image2 addGestureRecognizer:tap2];
     [scrollView addSubview:image2];
     self.imageView2 = image2;
     
@@ -129,6 +135,14 @@
     
     //页码个数
     self.pageControl.numberOfPages = self.arrayCircleData.count;
+}
+
+- (void)imageClick:(UITapGestureRecognizer *)tapGesture
+{
+    YSCircleImageView *circleImageView = (YSCircleImageView *)tapGesture.view;
+    if ([self.delegate respondsToSelector:@selector(circleRollViewClick:)]) {
+        [self.delegate circleRollViewClick:circleImageView.circleImageData];
+    }
 }
 
 /*********Timer*********/
